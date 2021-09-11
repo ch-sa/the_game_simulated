@@ -44,14 +44,20 @@ class Player(object):
     def get_best_draw(self, stacks: List[Stack], single_cards_allowed: bool, reserved_stacks=None):
         if reserved_stacks is None:
             reserved_stacks = set()
+
+        # initialize brute force
         new_stacks, new_score, played_cards = ([], 400, [])
+
         for card1 in self.cards:
 
             for i in range(len(stacks)):
                 tmp_stacks = deepcopy(stacks)
+
+                # skip stack if reserved or card not playable
                 if i in reserved_stacks or not self.try_to_play_card(tmp_stacks[i], card1):
                     continue
-
+                
+                # try to place another card on new stack composition
                 for card2 in self.cards:
                     if len(self.cards) == 1 or single_cards_allowed:
                         card2 = None
@@ -60,6 +66,8 @@ class Player(object):
 
                     for ii in range(len(tmp_stacks)):
                         tmp_tmp_stacks = deepcopy(tmp_stacks)
+
+                        # skip stack if reserved or card not playable
                         if ii in reserved_stacks or not self.try_to_play_card(tmp_tmp_stacks[ii], card2):
                             continue
 
@@ -69,6 +77,7 @@ class Player(object):
                             played_cards = [card1, card2]
                             # print(f"Cards {card1} & {card2} → Current Points {new_score}: {top(tmp_tmp_stacks)}
                             # (Old: {top(stacks)})")
+
         return new_stacks, new_score, played_cards
 
     def play(self, stacks: List[Stack], single_cards_allowed=False, reserved_stacks: Dict = None) -> List[Stack]:

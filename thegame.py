@@ -96,7 +96,7 @@ if __name__ == '__main__':
     win_scores = []
     loss_cards = []
 
-    n = 10001
+    n = 100
     for g in range(n):
         game = TheGame()
         game.mix_cards()
