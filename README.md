@@ -2,9 +2,10 @@
 → *This repository is currently still in the creation phase!*
 
 This is a simple simulation of the popular card game ['The Game'](https://de.wikipedia.org/wiki/The_Game_(Kartenspiel)), where players iteratively have to put all cards from 1 to 99 onto two increasing and two decreasing stacks.
-The only possiblity to decrease/ increase the stack is to place a card exactly ten lower or ten higher to the current top card.
-
-![Cover of the Game](http://middys.nsv.de/wp-content/uploads/2019/11/4034_The_Game_Schachtel_800.jpg)
+The only possiblity to decrease or increase the stack is to place a card exactly ten lower or ten higher to the current top card.
+<p align="center">
+<img alt="Cover of the Game" src="http://middys.nsv.de/wp-content/uploads/2019/11/4034_The_Game_Schachtel_800.jpg" width="300" align="center">
+</p>
 
 ### Game Logic
 The game logic is implemented in `thegame.py`.
